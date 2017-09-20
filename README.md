@@ -1,2 +1,2 @@
-# caspio-API
-Caspio-API integration (php)
+# Buffer-API
+Buffer-API integration (php)
