@@ -1,0 +1,47 @@
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>This is profiles/:id/schedules/update function test html</h1>
+<p> <label>cmd</label> 
+    <input type="text" id="cmd" value="/profiles/:id/schedules/update" readonly/></p>
+<p> <label>id</label> 
+    <input type="text" id="id" value="5995cc2fe1e07fa728ab5d1b"/></p>
+<p> <label>schedules[0]["days"][]</label> 
+    <input type="text" id="days" value="sat"/></p>
+<p> <label>schedules[0]["times"][]</label> 
+    <input type="text" id="times" value="12:00"/></p>
+<p> <input type="button" id="submit" value="Submit"> </p>
+
+<p> <p id="result"></p></p>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#submit').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'interface.php',
+                data: {                    
+                    cmd: $('#cmd').val(),
+                    id: $('#id').val(),
+                    times: $('#times').val(),
+                    days: $('#days').val(),
+                },
+                dataType: 'text',
+                success: function (data) {
+                    $('#result').html(data);
+                },
+                error: function (data) {
+                    $('#result').html('Error:<br>'.data);
+                }
+            });
+        });
+    });
+</script> 
+</html>

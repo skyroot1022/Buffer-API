@@ -1,0 +1,38 @@
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>This is /info/configuration function test html</h1>
+<p> <label>cmd</label> 
+    <input type="text" id="cmd" value="/info/configuration" readonly/></p>
+<p> <input type="button" id="submit" value="Submit"> </p>
+
+<p> <p id="result"></p></p>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#submit').click(function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'interface.php',
+                data: {                    
+                    cmd: $('#cmd').val(),
+                },
+                dataType: 'text',
+                success: function (data) {
+                    $('#result').html(data);
+                },
+                error: function (data) {
+                    $('#result').html('Error:<br>'.data);
+                }
+            });
+        });
+    });
+</script> 
+</html>
